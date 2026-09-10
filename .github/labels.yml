@@ -1,0 +1,36 @@
+- name: apca
+  color: "0366d6"
+  description: Related to the APCA contrast algorithm
+- name: oklch
+  color: "d73a4a"
+  description: Related to OKLCH color space manipulation
+- name: palette
+  color: "a2eeef"
+  description: Palette generation and preset library
+- name: userstyle
+  color: "7057ff"
+  description: Stylus / UserCSS export
+- name: userscript
+  color: "008672"
+  description: Tampermonkey / Greasemonkey export
+- name: token-export
+  color: "e4e669"
+  description: Export to CSS variables, Tailwind, DTCG
+- name: halation
+  color: "d876e3"
+  description: Halation and glare reduction features
+- name: low-vision
+  color: "fbca04"
+  description: General low-vision accessibility
+- name: a11y
+  color: "1d76db"
+  description: Accessibility enhancements
+- name: bug
+  color: "d73a4a"
+  description: Something isn't working
+- name: enhancement
+  color: "a2eeef"
+  description: New feature or request
+- name: documentation
+  color: "0075ca"
+  description: Improvements or additions to documentation

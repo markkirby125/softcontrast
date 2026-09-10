@@ -1,0 +1,12 @@
+- title: "v0.1"
+  state: open
+  description: "APCA engine + presets"
+- title: "v0.2"
+  state: open
+  description: "Export system (CSS, DTCG, Tailwind)"
+- title: "v0.3"
+  state: open
+  description: "Stylus/Tampermonkey output"
+- title: "v1.0"
+  state: open
+  description: "Full release with features"
