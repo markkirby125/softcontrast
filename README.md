@@ -27,7 +27,7 @@ By utilizing the CSS Color Module Level 4 **OKLCH** color space, SoftContrast ge
 
 ## Installation & Usage
 
-1. **Web Version**: Visit [SoftContrast on GitHub Pages](https://markkirby125.github.io/vision-apps/softcontrast/) to use the interactive generator.
+1. **Web Version**: Visit [SoftContrast on GitHub Pages](https://markkirby125.github.io/softcontrast/) to use the interactive generator.
 2. **Userscript**: Select a palette, choose your reading aids, and click "Copy Tampermonkey". Paste the generated code into your userscript manager to apply it globally across the web.
 3. **UserCSS**: Click "Copy Stylus" and paste into the Stylus extension for CSS-based, lightweight injection.
 
