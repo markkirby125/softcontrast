@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const fatigueDesc = document.getElementById('fatigue-desc');
 
     let currentPreset = null;
-    let ignoreNextHashUpdate = false;
 
     const fontSmoothToggler = createFontSmoothingToggler(document.body);
     const ruler = createReadingRuler(document.body);
@@ -54,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateHash() {
-        if (ignoreNextHashUpdate) return;
         if (!currentPreset) return;
         const hash = encodeState(currentPreset.name, {
             fontSmooth: fontSmoothToggler.enabled,
@@ -94,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function restoreFromHash() {
         const decoded = decodeState(window.location.hash);
         const preset = decoded ? findPresetByName(decoded.name) : presets[0];
+        if (decoded && decoded.name && preset.name.toLowerCase() !== decoded.name.toLowerCase()) {
+            announce(`Unknown preset "${decoded.name}"; using ${preset.name}`);
+        }
         applyPreset(preset, {
             fontSmooth: decoded ? decoded.fontSmooth : false,
             ruler: decoded ? decoded.ruler : false
@@ -154,9 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('hashchange', () => {
-        ignoreNextHashUpdate = true;
         restoreFromHash();
-        ignoreNextHashUpdate = false;
     });
 
     restoreFromHash();
