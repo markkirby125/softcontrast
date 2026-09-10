@@ -2,7 +2,7 @@
 
 **Anti-Halation Reading Palette Generator**
 
-SoftContrast is an anti-halation reading palette generator designed for readers with astigmatism, high myopia, age-related macular degeneration (AMD), and photophobia. It replaces naive WCAG 2.1 contrast ratios with the Accessible Perceptual Contrast Algorithm (APCA) and leverages the OKLCH color space to produce perceptually uniform, halation-proof reading themes.
+SoftContrast is an anti-halation reading palette generator designed for readers with astigmatism, high myopia, age-related macular degeneration (AMD), and photophobia. It replaces naive WCAG 2.1 contrast ratios with the Accessible Perceptual Contrast Algorithm (APCA) and leverages the OKLCH color space to produce perceptually uniform, low-glare reading themes.
 
 ## The Science
 
