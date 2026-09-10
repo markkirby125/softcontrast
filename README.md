@@ -35,6 +35,17 @@ By utilizing the CSS Color Module Level 4 **OKLCH** color space, SoftContrast ge
 
 Contributions are welcome! Please review the open issues and match PRs against the implementation plan outlined in `IMPLEMENTATION_PLAN.md`.
 
+## Part of the Vision Apps toolkit
+
+SoftContrast is one of four accessibility tools in the [Vision Apps](https://github.com/markkirby125/vision-apps) toolkit — small, dependency-light projects that reduce visual strain for low-vision, photophobic and astigmatic readers.
+
+| Project | What it does |
+| --- | --- |
+| [ChromaCalm](https://github.com/markkirby125/chromacalm) | Zero-install spectral notch filtering for photophobia, migraine and screen halation. |
+| **SoftContrast** *(this repo)* | Anti-halation reading palettes built on APCA and OKLCH. |
+| [terminal-a11y](https://github.com/markkirby125/terminal-a11y) | Screen-reader, photophobia, braille and sensory-budget modes for the command line. |
+| [FocusBeacon](https://github.com/markkirby125/focusbeacon) | High-contrast dual-contour focus ring and a cursor radar for tunnel vision. |
+
 ## License
 
 MIT License. See `LICENSE` for details.
