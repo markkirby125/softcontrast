@@ -1,0 +1,7 @@
+# SoftContrast
+
+> Anti-halation reading palette generator using APCA and OKLCH. By Paul Kirby.
+
+- Live app: https://markkirby125.github.io/softcontrast/
+- Repo: https://github.com/markkirby125/softcontrast
+- Part of Vision Apps: https://github.com/markkirby125/vision-apps
