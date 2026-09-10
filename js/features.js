@@ -4,31 +4,31 @@ export function estimateFatigue(contrast) {
     if (lc < 45) {
         return {
             tier: 'low',
-            label: 'Low fatigue risk',
-            description: 'Sub-threshold contrast may be comfortable but can reduce reading speed.',
+            label: 'Low contrast',
+            description: 'Below APCA Lc 45. Comfortable, but may reduce reading speed for body text.',
             percent: Math.min(100, Math.round((lc / 45) * 25))
         };
     }
     if (lc <= 75) {
         return {
             tier: 'optimal',
-            label: 'Optimal anti-halation zone',
-            description: 'APCA Lc sits in the clinical sweet spot for sustained reading.',
+            label: 'Comfortable range',
+            description: 'APCA Lc 45-75. A moderate-contrast band suited to sustained reading.',
             percent: Math.min(100, Math.round(25 + ((lc - 45) / 30) * 25))
         };
     }
     if (lc <= 90) {
         return {
             tier: 'elevated',
-            label: 'Elevated halation risk',
-            description: 'High contrast can trigger irradiation blur for astigmatic or low-vision readers.',
+            label: 'High contrast',
+            description: 'APCA Lc 75-90. Approaching the body-text ceiling; some readers perceive glare here.',
             percent: Math.min(100, Math.round(50 + ((lc - 75) / 15) * 25))
         };
     }
     return {
         tier: 'high',
-        label: 'High fatigue risk',
-        description: 'Extreme contrast may cause severe ghosting and eye strain over time.',
+        label: 'Very high contrast',
+        description: 'At or above APCA Lc 90. High-contrast themes can increase perceived glare for some users.',
         percent: Math.min(100, Math.round(75 + ((lc - 90) / 30) * 25))
     };
 }
@@ -72,8 +72,16 @@ export function createReadingRuler(container) {
         setTop(y);
     }
 
+    function isEditable(target) {
+        if (!target || !target.tagName) return false;
+        const tag = target.tagName.toLowerCase();
+        return tag === 'input' || tag === 'textarea' || tag === 'select' ||
+            target.isContentEditable === true;
+    }
+
     function onKey(e) {
         if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+        if (isEditable(e.target)) return; // never hijack caret/scroll inside form controls
         e.preventDefault();
         const currentTop = parseFloat(ruler.style.top) || 0;
         const delta = e.key === 'ArrowUp' ? -step : step;

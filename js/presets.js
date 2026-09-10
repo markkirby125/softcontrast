@@ -28,6 +28,3 @@ export const presets = [
     createPreset("FL-41 Night", 0.15, 0.04, 15, true)
 ];
 
-if (typeof window !== 'undefined') {
-    window.softContrastPresets = presets;
-}

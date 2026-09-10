@@ -37,9 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyPreset(preset, options = {}) {
         currentPreset = preset;
-        previewCard.style.setProperty('--bg-color', preset.bg);
-        previewCard.style.setProperty('--text-color', preset.text);
-        previewCard.style.setProperty('--accent-color', preset.accent || preset.text);
+        if (previewCard) {
+            previewCard.style.setProperty('--bg-color', preset.bg);
+            previewCard.style.setProperty('--text-color', preset.text);
+            previewCard.style.setProperty('--accent-color', preset.accent || preset.text);
+        }
 
         fontSmoothToggler.enabled = !!options.fontSmooth;
         if (fontSmoothCheckbox) fontSmoothCheckbox.checked = !!options.fontSmooth;
@@ -102,38 +104,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activeBtn) updateActiveButton(activeBtn);
     }
 
-    function handleExport(generator) {
-        if (!currentPreset) return;
-        const text = generator(currentPreset);
-        exportOutput.value = text;
-        navigator.clipboard.writeText(text).then(() => {
-            announce('Exported code copied to clipboard');
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-            announce('Export generated; clipboard copy failed');
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                announce('Exported code copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+                announce('Export generated; clipboard copy failed');
+            });
+        } else {
+            announce('Export generated; copy it from the text area below');
+        }
+    }
+
+    function bindExportButton(id, build) {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            if (!currentPreset) return;
+            const text = build();
+            if (exportOutput) exportOutput.value = text;
+            copyToClipboard(text);
         });
     }
 
     renderPresetButtons();
 
-    document.getElementById('export-css-btn').addEventListener('click', () => handleExport(generateCSS));
-    document.getElementById('export-dtcg-btn').addEventListener('click', () => handleExport(generateDTCG));
-    document.getElementById('export-tailwind-btn').addEventListener('click', () => handleExport(generateTailwind));
-    document.getElementById('export-stylus-btn').addEventListener('click', () => handleExport(generateStylus));
-    document.getElementById('export-userscript-btn').addEventListener('click', () => {
-        if (!currentPreset) return;
-        const text = generateUserscript(currentPreset, {
-            fontSmooth: fontSmoothToggler.enabled,
-            ruler: ruler.enabled
-        });
-        exportOutput.value = text;
-        navigator.clipboard.writeText(text).then(() => {
-            announce('Userscript copied to clipboard');
-        }).catch(err => {
-            console.error('Failed to copy userscript: ', err);
-            announce('Userscript generated; clipboard copy failed');
-        });
-    });
+    bindExportButton('export-css-btn', () => generateCSS(currentPreset));
+    bindExportButton('export-dtcg-btn', () => generateDTCG(currentPreset));
+    bindExportButton('export-tailwind-btn', () => generateTailwind(currentPreset));
+    bindExportButton('export-stylus-btn', () => generateStylus(currentPreset));
+    bindExportButton('export-userscript-btn', () => generateUserscript(currentPreset, {
+        fontSmooth: fontSmoothToggler.enabled,
+        ruler: ruler.enabled
+    }));
 
     if (fontSmoothCheckbox) {
         fontSmoothCheckbox.addEventListener('change', () => {

@@ -1,7 +1,7 @@
 const STORAGE_VERSION = 'v1';
 
 function sanitizePresetName(name) {
-    return name.replace(/[^a-z0-9\s-]/gi, '').trim().slice(0, 40);
+    return String(name || '').replace(/[^a-z0-9\s-]/gi, '').trim().slice(0, 40);
 }
 
 export function encodeState(presetName, options = {}) {
@@ -17,7 +17,12 @@ export function decodeState(hash) {
     const parts = raw.split(';');
     if (parts.length < 2 || parts[0] !== STORAGE_VERSION) return null;
 
-    const name = decodeURIComponent(parts[1]);
+    let name;
+    try {
+        name = decodeURIComponent(parts[1]);
+    } catch (e) {
+        return null; // malformed percent-encoding in the hash
+    }
     const flags = parts[2] || '00';
     return {
         name,

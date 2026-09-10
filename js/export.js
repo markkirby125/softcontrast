@@ -81,12 +81,6 @@ export function generateStylus(preset) {
   a, a:visited {
     color: var(--sc-color-accent-base) !important;
   }
-
-  * {
-    background-color: transparent !important;
-    color: inherit !important;
-    border-color: currentColor !important;
-  }
 }`;
 }
 

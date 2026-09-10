@@ -1,0 +1,19 @@
+{
+  "name": "softcontrast",
+  "version": "1.0.0",
+  "description": "Anti-halation reading palette generator using APCA and OKLCH",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "apca",
+    "oklch",
+    "contrast",
+    "low-vision"
+  ],
+  "author": "Mark Kirby <mark.kirby125@googlemail.com>",
+  "license": "MIT"
+}
