@@ -69,7 +69,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
 - **Verification criteria**: Generated background/text pairs achieve target APCA scores without exceeding sRGB boundaries.
 
 ### Phase 3: ✅ Preset Library (all 6 palettes)
-- **Goal**: Hardcode the curated clinical palettes.
+- **Goal**: Hardcode the curated palettes.
 - **Files touched**: `js/presets.js`
 - **Steps**:
   1. Define Midnight Ochre (141416 / D6D0C4).
@@ -155,7 +155,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
 - **Goal**: Finalize documentation and deployment.
 - **Files touched**: `README.md`
 - **Steps**:
-  1. Complete README with clinical context, screenshots placeholder, and installation instructions.
+  1. Complete README with clear context, screenshots placeholder, and installation instructions.
   2. Verify all paths in `index.html` are relative.
 - **Verification criteria**: Repo structure is flat/clean enough to be directly hosted on GitHub Pages root.
 
