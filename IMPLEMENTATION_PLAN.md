@@ -107,7 +107,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Output the `@-moz-document` regexp block with non-destructive DOM overrides.
 - **Verification criteria**: Output can be pasted directly into Stylus extension without parsing errors.
 
-### Phase 7: Tampermonkey Userscript Generator (with FOUC elimination)
+### Phase 7: ✅ Tampermonkey Userscript Generator (with FOUC elimination)
 - **Goal**: Output a valid Userscript for CSP bypassing and early injection.
 - **Files touched**: `js/export.js`
 - **Steps**:
@@ -116,7 +116,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Ensure styles are injected before HTML body parsing.
 - **Verification criteria**: Output installs seamlessly into Tampermonkey and applies styles before body paints.
 
-### Phase 8: URL Hash Share System
+### Phase 8: ✅ URL Hash Share System
 - **Goal**: Serialize current palette state into the URL fragment.
 - **Files touched**: `js/storage.js`, `js/app.js`
 - **Steps**:
@@ -125,7 +125,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Update hash immediately when the active palette changes.
 - **Verification criteria**: Refreshing the page with a populated hash perfectly restores the custom palette view.
 
-### Phase 9: Visual Fatigue Estimator
+### Phase 9: ✅ Visual Fatigue Estimator
 - **Goal**: Calculate and display halation risk scores.
 - **Files touched**: `js/features.js`, `js/app.js`, `index.html`
 - **Steps**:
@@ -134,7 +134,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Display score dynamically in the UI shell.
 - **Verification criteria**: Pure white on black triggers "High Risk", while Midnight Ochre shows "Low Risk / Optimal".
 
-### Phase 10: Per-Domain Memory (localStorage)
+### Phase 10: ✅ Per-Domain Memory (localStorage)
 - **Goal**: Allow userscripts to remember per-site overrides.
 - **Files touched**: `js/export.js` (Tampermonkey script generation)
 - **Steps**:
@@ -142,7 +142,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   2. Tie it to `window.location.hostname`.
 - **Verification criteria**: Generated userscript correctly retrieves custom preference for the current site.
 
-### Phase 11: Font Rendering Toggle + Reading Ruler
+### Phase 11: ✅ Font Rendering Toggle + Reading Ruler
 - **Goal**: Implement spatial accessibility tools.
 - **Files touched**: `js/features.js`, `js/export.js`, `index.html`
 - **Steps**:
@@ -151,7 +151,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Integrate the ruler into the Stylus/Userscript export.
 - **Verification criteria**: Ruler accurately tracks mouse vertically; font smoothing toggle visibly changes text aliasing.
 
-### Phase 12: GitHub Pages Deployment + README
+### Phase 12: ✅ GitHub Pages Deployment + README
 - **Goal**: Finalize documentation and deployment.
 - **Files touched**: `README.md`
 - **Steps**:
