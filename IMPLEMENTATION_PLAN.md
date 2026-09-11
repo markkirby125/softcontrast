@@ -1,7 +1,7 @@
 # SoftContrast — Implementation Plan
 
 ## Overview
-SoftContrast is an anti-halation reading palette generator leveraging the Accessible Perceptual Contrast Algorithm (APCA) and OKLCH color science to eliminate visual degradation (irradiation blur, ghosting) for low-vision and astigmatic populations. It outputs cross-browser userstyles and userscripts.
+SoftContrast is an anti-halation reading palette generator leveraging the Accessible Perceptual Contrast Algorithm (APCA) and OKLCH color science to reduce visual degradation (irradiation blur, ghosting) for low-vision and astigmatic populations. It outputs cross-browser userstyles and userscripts.
 
 ## Scope Definition
 ### In Scope
@@ -14,7 +14,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
 - FOUC elimination mechanism
 - Visual Fatigue Estimator
 - Font Rendering Toggle & Reading Ruler
-- LocalStorage per-domain memory
+- Tampermonkey userscript per-domain memory (`GM_setValue` / `GM_getValue` per hostname)
 - URL Hash State Serialization
 
 ### Out of Scope
@@ -28,7 +28,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
 - **Color Science**: OKLCH for uniformity, APCA (SAPC) for contrast
 - **Tokens**: 3-tier CSS Custom Properties (Primitive, Semantic, Component)
 - **Injection Strategy**: `@run-at document-start` Tampermonkey scripts, UserCSS Stylus injection bypassing CSP
-- **Storage**: `localStorage` (per-domain keying), URL Hash for shareable states
+- **Storage**: URL Hash for shareable web-app states; Tampermonkey `GM_setValue` / `GM_getValue` per hostname in generated userscripts
 
 ## File Map
 - `index.html` (UI shell, preview canvas, and FOUC elimination)
@@ -38,7 +38,7 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
 - `js/presets.js` (The 6 curated palettes)
 - `js/export.js` (Logic for CSS, DTCG, Stylus, Tampermonkey string generation)
 - `js/features.js` (Fatigue estimator, reading ruler, font rendering toggle)
-- `js/storage.js` (URL hash and localStorage management)
+- `js/storage.js` (URL hash management and userscript storage template)
 - `js/app.js` (Main controller binding UI to logic)
 - `.github/ISSUE_TEMPLATE/bug_report.md`
 - `.github/ISSUE_TEMPLATE/feature_request.md`
@@ -134,8 +134,8 @@ SoftContrast is an anti-halation reading palette generator leveraging the Access
   3. Display score dynamically in the UI shell.
 - **Verification criteria**: Pure white on black triggers "High Risk", while Midnight Ochre shows "Low Risk / Optimal".
 
-### Phase 10: ✅ Per-Domain Memory (localStorage)
-- **Goal**: Allow userscripts to remember per-site overrides.
+### Phase 10: ✅ Per-Domain Memory (Tampermonkey userscript storage)
+- **Goal**: Allow generated userscripts to remember per-site overrides.
 - **Files touched**: `js/export.js` (Tampermonkey script generation)
 - **Steps**:
   1. Add `GM_setValue` / `GM_getValue` to the userscript template.
